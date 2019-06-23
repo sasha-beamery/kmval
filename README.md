@@ -29,12 +29,12 @@ brew install LGUG2Z/tap/kmval
 At [Beamery](https://beamery.com), where I work, we deploy over 70 services as various Kubernetes objects on our clusters.
 Alongside mainline path-to-production environments, there are also scaled-down development and staging environments used by
 delivery teams. This results in `>70 * N` Kubernetes manifest configurations to keep a handle on, which is not really possible
-or to do manually.
+to do manually.
 
 [Kustomize](https://kustomize.io) is an excellent tool that provides Kubernetes-native configuration management. Being
 able to define a common base layer and patch differences such as replica numbers, resource requests etc. per environment
 using Kustomize `overlay`s really helps to improve consistency, and opens up the path to running linting and quality tools
-that would otherwise not be possible to use with templating which often results in invalid `yaml` been stored in version
+that would otherwise not be possible to use with templating which often results in invalid `yaml` being stored in version
 control and templated at deploy-time.
 
 The `kustomize build` command has an additional use as an overlay validator and can be scripted to ensure that every
