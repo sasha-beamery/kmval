@@ -124,8 +124,8 @@ func (t *TestPlan) Execute() (error, bool) {
 	}
 
 	sort.Strings(failures)
-	for _, pass := range failures {
-		fmt.Printf(pass)
+	for _, failure := range failures {
+		fmt.Printf(failure)
 	}
 
 	return nil, len(failures) == 0
