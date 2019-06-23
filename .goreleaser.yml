@@ -1,0 +1,45 @@
+project_name: kmval
+
+env:
+  - GO111MODULE=on
+before:
+  hooks:
+    - go mod download
+
+builds:
+- env:
+  - CGO_ENABLED=0
+  binary: kmval
+  ldflags:
+   - -X github.com/LGUG2Z/kmval/cli.Version={{ .Version }} -X github.com/LGUG2Z/kmval/cli.Commit={{ .Commit }}
+  goarch:
+    - amd64
+
+brew:
+  name: kmval
+  github:
+    owner: LGUG2Z
+    name: homebrew-tap
+  folder: Formula
+  homepage: "https://github.com/LGUG2Z/kmval"
+  description: "A Kustomize manifest validator"
+  dependencies:
+    - yq
+    - kustomize
+  test: |
+    system "#{bin}/kmval --version"
+  install: |
+    bin.install "kmval"
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot:
+  name_template: "{{ .Tag }}-snapshot"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+    - '^docs:'
+    - '^test:'
