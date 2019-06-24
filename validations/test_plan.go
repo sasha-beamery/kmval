@@ -77,40 +77,40 @@ func (t *TestPlan) Execute() (error, bool) {
 			case Defined:
 				expected := t.QueryToBoolExpectation[query]
 				if output == "null" && expected == false {
-					passes = append(passes, fmt.Sprintf("%s: %s %s\n", pass, query, color.GreenString("UNDEFINED")))
+					passes = append(passes, fmt.Sprintf("%s: %s %s %s\n", pass, object, query, color.GreenString("UNDEFINED")))
 				}
 
 				if output == "null" && expected == true {
-					failures = append(failures, fmt.Sprintf("%s: %s %s\n", fail, query, color.RedString("UNDEFINED")))
+					failures = append(failures, fmt.Sprintf("%s: %s %s %s\n", fail, object, query, color.RedString("UNDEFINED")))
 				}
 
 				if output != "null" && expected == true {
-					passes = append(passes, fmt.Sprintf("%s: %s %s\n", pass, query, color.GreenString("DEFINED")))
+					passes = append(passes, fmt.Sprintf("%s: %s %s %s\n", pass, object, query, color.GreenString("DEFINED")))
 				}
 
 				if output != "null" && expected == false {
-					failures = append(failures, fmt.Sprintf("%s: %s %s\n", fail, query, color.RedString("DEFINED")))
+					failures = append(failures, fmt.Sprintf("%s: %s %s %s\n", fail, object, query, color.RedString("DEFINED")))
 				}
 			case Partials:
 				expected := t.QueryToStringExpectation[query]
 				if strings.Contains(output, expected) {
-					passes = append(passes, fmt.Sprintf("%s: %s contains %s\n", pass, query, color.GreenString(expected)))
+					passes = append(passes, fmt.Sprintf("%s: %s %s contains %s\n", pass, object, query, color.GreenString(expected)))
 				} else {
-					failures = append(failures, fmt.Sprintf("%s: %s does not contain %s \n", fail, query, color.RedString(expected)))
+					failures = append(failures, fmt.Sprintf("%s: %s %s does not contain %s \n", fail, object, query, color.RedString(expected)))
 				}
 			case Integers:
 				expected := t.QueryToIntegerExpectation[query]
 				if output == strconv.Itoa(expected) {
-					passes = append(passes, fmt.Sprintf("%s: %s %s\n", pass, query, color.GreenString("%d", expected)))
+					passes = append(passes, fmt.Sprintf("%s: %s %s %s\n", pass, object, query, color.GreenString("%d", expected)))
 				} else {
-					failures = append(failures, fmt.Sprintf("%s: %s %s\n", fail, query, color.RedString("%d", expected)))
+					failures = append(failures, fmt.Sprintf("%s: %s %s %s\n", fail, object, query, color.RedString("%d", expected)))
 				}
 			case Strings:
 				expected := t.QueryToStringExpectation[query]
 				if output == expected {
-					passes = append(passes, fmt.Sprintf("%s: %s %s\n", pass, query, color.GreenString(expected)))
+					passes = append(passes, fmt.Sprintf("%s: %s %s %s\n", pass, object, query, color.GreenString(expected)))
 				} else {
-					failures = append(failures, fmt.Sprintf("%s: %s %s \n", fail, query, color.RedString(expected)))
+					failures = append(failures, fmt.Sprintf("%s: %s %s %s \n", fail, object, query, color.RedString(expected)))
 				}
 			}
 		}

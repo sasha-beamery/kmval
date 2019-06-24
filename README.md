@@ -142,34 +142,34 @@ An example of the validation output based on the example `validations.yaml` file
 ❯ kmval
 
 acl/base
-PASS: metadata.namespace acl
-PASS: spec.replicas 5
-PASS: spec.template.spec.affinity.nodeAffinity DEFINED
-PASS: spec.template.spec.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution.nodeSelectorTerms[0].matchExpressions[0].values[0] api
-PASS: spec.template.spec.containers[0].resources.limits DEFINED
-PASS: spec.template.spec.containers[0].resources.requests DEFINED
-PASS: spec.template.spec.tolerations DEFINED
-PASS: spec.template.spec.tolerations[0].value api
+PASS: Deployment metadata.namespace acl
+PASS: Deployment spec.replicas 5
+PASS: Deployment spec.template.spec.affinity.nodeAffinity DEFINED
+PASS: Deployment spec.template.spec.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution.nodeSelectorTerms[0].matchExpressions[0].values[0] api
+PASS: Deployment spec.template.spec.containers[0].resources.limits DEFINED
+PASS: Deployment spec.template.spec.containers[0].resources.requests DEFINED
+PASS: Deployment spec.template.spec.tolerations DEFINED
+PASS: Deployment spec.template.spec.tolerations[0].value api
 
 acl/canary
-PASS: metadata.namespace acl
-PASS: spec.template.spec.affinity.nodeAffinity DEFINED
-PASS: spec.template.spec.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution.nodeSelectorTerms[0].matchExpressions[0].values[0] api
-PASS: spec.template.spec.containers[0].resources.limits DEFINED
-PASS: spec.template.spec.containers[0].resources.requests DEFINED
-PASS: spec.template.spec.tolerations DEFINED
-PASS: spec.template.spec.tolerations[0].value api
-FAIL: spec.replicas 3
+PASS: Deployment metadata.namespace acl
+PASS: Deployment spec.template.spec.affinity.nodeAffinity DEFINED
+PASS: Deployment spec.template.spec.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution.nodeSelectorTerms[0].matchExpressions[0].values[0] api
+PASS: Deployment spec.template.spec.containers[0].resources.limits DEFINED
+PASS: Deployment spec.template.spec.containers[0].resources.requests DEFINED
+PASS: Deployment spec.template.spec.tolerations DEFINED
+PASS: Deployment spec.template.spec.tolerations[0].value api
+FAIL: Deployment spec.replicas 3
 
 acl/production
-PASS: metadata.namespace acl
-PASS: spec.replicas 5
-PASS: spec.template.spec.affinity.nodeAffinity DEFINED
-PASS: spec.template.spec.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution.nodeSelectorTerms[0].matchExpressions[0].values[0] api
-PASS: spec.template.spec.containers[0].resources.limits DEFINED
-PASS: spec.template.spec.containers[0].resources.requests DEFINED
-PASS: spec.template.spec.tolerations DEFINED
-PASS: spec.template.spec.tolerations[0].value api
+PASS: Deployment metadata.namespace acl
+PASS: Deployment spec.replicas 5
+PASS: Deployment spec.template.spec.affinity.nodeAffinity DEFINED
+PASS: Deployment spec.template.spec.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution.nodeSelectorTerms[0].matchExpressions[0].values[0] api
+PASS: Deployment spec.template.spec.containers[0].resources.limits DEFINED
+PASS: Deployment spec.template.spec.containers[0].resources.requests DEFINED
+PASS: Deployment spec.template.spec.tolerations DEFINED
+PASS: Deployment spec.template.spec.tolerations[0].value api
 
 PASSED: acl/base
 PASSED: acl/production
