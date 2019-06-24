@@ -35,6 +35,7 @@ func App() *cli.App {
 
 	app.Flags = []cli.Flag{
 		cli.BoolFlag{Name: "fail-fast", Usage: "stop running validations after the first failure"},
+		cli.StringFlag{Name: "file", Usage: "name of validations file", Value: "validations.yaml"},
 	}
 
 	var isInstalled = func(name string) bool {
@@ -71,7 +72,7 @@ func App() *cli.App {
 			return ErrEitherOneOrNoArguments
 		}
 
-		validationsManifest, err := validations.LoadManifest()
+		validationsManifest, err := validations.LoadManifest(c.String("file"))
 		if err != nil {
 			log.Fatal(err)
 		}

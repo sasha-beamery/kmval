@@ -36,9 +36,9 @@ type StringValidations map[string]string
 type PartialValidations map[string]string
 type IntegerValidations map[string]int
 
-func LoadManifest() (*Manifest, error) {
+func LoadManifest(file string) (*Manifest, error) {
 	var v Manifest
-	bytes, err := ioutil.ReadFile("validations.yaml")
+	bytes, err := ioutil.ReadFile(file)
 	if err != nil {
 		return nil, err
 	}

@@ -185,7 +185,8 @@ so the validation for `acl/canary` reports as failed.
 ### CLI
 `kmval` can either be run in the directory where the `validations.yaml` file to run against is kept, or a single
 argument can be given defining an absolute or relative path to the directory where the `validations.yaml` file to
-run against is kept.
+run against is kept. Alternatively, the `validations.yaml` filename can be overridden using the `--file` flag,
+making it possible to keep validations separated in a single top level folder by area of concern.
 
 ```text
 NAME:
@@ -194,14 +195,15 @@ NAME:
 USAGE:
    kmval [global options] command [command options] [arguments...]
 
-AUTHOR:
-   J. Iqbal <jade@beamery.com>
+VERSION:
+   0.0.1
 
 COMMANDS:
      help, h  Shows a list of commands or help for one command
 
 GLOBAL OPTIONS:
    --fail-fast    stop running validations after the first failure
+   --file value   name of validations file (default: "validations.yaml")
    --help, -h     show help
    --version, -v  print the version
 ```
