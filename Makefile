@@ -35,7 +35,6 @@ install:
 	go install ${LDFLAGS}
 
 fmt:
-	gofmt -s -w cli validations main.go
 	goimports -w cli validations main.go
 
 release:

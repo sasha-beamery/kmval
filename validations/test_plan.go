@@ -116,16 +116,20 @@ func (t *TestPlan) Execute() (error, bool) {
 		}
 	}
 
-	fmt.Printf("\n%s/%s\n", t.Name, t.Overlay)
+	if len(failures) == 0 {
+		color.Green("%s/%s", t.Name, t.Overlay)
+	} else {
+		fmt.Printf("\n%s/%s\n", t.Name, t.Overlay)
 
-	sort.Strings(passes)
-	for _, pass := range passes {
-		fmt.Printf(pass)
-	}
+		sort.Strings(passes)
+		for _, pass := range passes {
+			fmt.Printf(pass)
+		}
 
-	sort.Strings(failures)
-	for _, failure := range failures {
-		fmt.Printf(failure)
+		sort.Strings(failures)
+		for _, failure := range failures {
+			fmt.Printf(failure)
+		}
 	}
 
 	return nil, len(failures) == 0
