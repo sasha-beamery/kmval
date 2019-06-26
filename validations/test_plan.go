@@ -119,17 +119,14 @@ func (t *TestPlan) Execute() (error, bool) {
 	if len(failures) == 0 {
 		color.Green("%s/%s", t.Name, t.Overlay)
 	} else {
-		fmt.Printf("\n%s/%s\n", t.Name, t.Overlay)
-
-		sort.Strings(passes)
-		for _, pass := range passes {
-			fmt.Printf(pass)
-		}
+		color.Red("\n%s/%s\n", t.Name, t.Overlay)
 
 		sort.Strings(failures)
 		for _, failure := range failures {
 			fmt.Printf(failure)
 		}
+
+		fmt.Println()
 	}
 
 	return nil, len(failures) == 0

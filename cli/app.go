@@ -120,12 +120,6 @@ func App() *cli.App {
 		case false:
 			fmt.Println()
 
-			for _, plan := range passedPlans {
-				color.Green("PASSED: %s", plan)
-			}
-
-			fmt.Println()
-
 			for _, plan := range failedPlans {
 				color.Red("FAILED: %s", plan)
 			}
