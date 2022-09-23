@@ -18,7 +18,7 @@ PLATFORMS=darwin linux
 ARCHITECTURES=amd64 arm64
 
 # Setup linker flags option for build that interoperate with variable names in src code
-LDFLAGS=-ldflags "-X github.com/sasha-beamery/kmval/cli.Version=${VERSION} -X github.com/sasha-beamery/kmval/cli.Commit=${COMMIT}"
+LDFLAGS=-ldflags "-X github.com/LGUG2Z/kmval/cli.Version=${VERSION} -X github.com/LGUG2Z/kmval/cli.Commit=${COMMIT}"
 
 default: build
 
