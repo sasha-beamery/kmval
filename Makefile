@@ -28,8 +28,14 @@ build:
 	go build ${LDFLAGS} -o ${BINARY}
 
 build_all:
+build_all:
 	$(foreach GOOS, $(PLATFORMS),\
-	$(foreach GOARCH, $(ARCHITECTURES), $(shell export GOOS=$(GOOS); export GOARCH=$(GOARCH); go build -v -o $(BINARY)-$(GOOS)-$(GOARCH))))
+	$(foreach GOARCH, $(ARCHITECTURES), $(shell export GOOS=$(GOOS); export GOARCH=$(GOARCH); export VERSION=$(VERSION);\
+	mkdir $(BINARY)_$(VERSION)_$(GOOS)_$(GOARCH);\
+	go build -v ${LDFLAGS} -o $(BINARY)_$(VERSION)_$(GOOS)_$(GOARCH)/$(BINARY);\
+	cp README.md $(BINARY)_$(VERSION)_$(GOOS)_$(GOARCH)/README.md;\
+	tar -czvf $(BINARY)_$(VERSION)_$(GOOS)_$(GOARCH).tar.gz -C $(BINARY)_$(VERSION)_$(GOOS)_$(GOARCH) .)))
+	sha256sum --binary $(BINARY)_$(VERSION)_*.tar.gz > checksums.txt
 
 install:
 	go install ${LDFLAGS}
