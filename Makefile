@@ -28,7 +28,6 @@ build:
 	go build ${LDFLAGS} -o ${BINARY}
 
 build_all:
-build_all:
 	$(foreach GOOS, $(PLATFORMS),\
 	$(foreach GOARCH, $(ARCHITECTURES), $(shell export GOOS=$(GOOS); export GOARCH=$(GOARCH); export VERSION=$(VERSION);\
 	mkdir $(BINARY)_$(VERSION)_$(GOOS)_$(GOARCH);\
@@ -48,7 +47,8 @@ release:
 
 # Remove only what we've created
 clean:
-	find ${ROOT_DIR} -name '${BINARY}[-?][a-zA-Z0-9]*[-?][a-zA-Z0-9]*' -delete
-	rm -rf dist
+	find ${ROOT_DIR} -name '${BINARY}[_][a-zA-Z0-9]*[_][a-zA-Z0-9]*' -exec rm -rf {} +
+	rm -f ${ROOT_DIR}/checksums.txt
+	rm -rf ${ROOT_DIR}/dist
 
 .PHONY: check clean install build_all all
