@@ -10,6 +10,7 @@ any type of Kubernetes object produced by building a `kustomize` `base` or `over
   * [`validations.yaml`](#-validationsyaml-)
   * [Output](#output)
   * [CLI](#cli)
+- [Release](#release)
 
 ## Installation
 ### Go Get
@@ -208,3 +209,13 @@ GLOBAL OPTIONS:
    --version, -v  print the version
 ```
 
+## Release
+
+```
+git clone https://github.com/LGUG2Z/kmval.git
+cd kmval
+make build_all
+gh auth login
+gh release upload v`cat VERSION` kmval_`cat VERSION`_*.tar.gz checksums.txt --clobber
+make clean
+```
